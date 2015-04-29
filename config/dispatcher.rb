@@ -3,15 +3,14 @@ require 'controllers/not_found_controller'
 
 require 'controllers/api_controller'
 
+require 'controllers/freestyle_controller'
+
 module MyApplication
   class Dispatcher
     def call(env)
       path_info = env['PATH_INFO']
 
-      app = case path_info
-        when %r{^/api} then ApiController.new
-        else NotFoundController.new
-      end
+      app = FreestyleController.new
 
       app.call(env)
     end
