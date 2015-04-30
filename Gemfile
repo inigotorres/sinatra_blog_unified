@@ -4,8 +4,8 @@ gem 'sinatra', '~> 1.4.5'
 
 gem 'pony'
 gem 'data_mapper'
+gem 'dm-sqlite-adapter', '~> 1.2.0'
 
-gem 'airbrake', '~> 4.1.0'
 gem 'foreman', '~> 0.62.0', require: false
 
 group :development do
