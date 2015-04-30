@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <link href="public/css/reset.css" rel="styletsheet">
+  <link href="public/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <hgroup>
+      <h1><a href="/">I&ntilde;igo's blog!</a></h1>
+      <h2>the coolest blog ever</h2>
+    </hgroup>
+  </header>
+
+  <div id="main">
+    <%= yield %>
+  </div>
+  
+  <footer>
+    <nav>
+      <a href='/'>Home</a>
+      <p class="separator"> || </p>
+      <a href='/about'>About</a>
+    </nav>   
+  </footer>
+</body>
+</html>   
