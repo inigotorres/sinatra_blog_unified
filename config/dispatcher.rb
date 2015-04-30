@@ -4,6 +4,7 @@ require 'controllers/not_found_controller'
 require 'controllers/api_controller'
 
 require 'controllers/freestyle_controller'
+require 'controllers/about_controller'
 
 module MyApplication
   class Dispatcher
@@ -11,6 +12,7 @@ module MyApplication
       path_info = env['PATH_INFO']
 
       app = FreestyleController.new
+      app = AboutController.new if path_info == '/about'
 
       app.call(env)
     end

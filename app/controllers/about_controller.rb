@@ -5,7 +5,7 @@ require 'pony'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/freestyle.db")
 
-class FreestyleController < ApplicationController
+class AboutController < ApplicationController
   class Message
     include DataMapper::Resource
     property :id, Serial
@@ -33,6 +33,10 @@ class FreestyleController < ApplicationController
 
   get '/' do
     erb :main
+  end
+
+  get '/about' do
+    erb :about
   end
 
   get '/view' do
