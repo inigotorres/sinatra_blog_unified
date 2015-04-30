@@ -7,7 +7,7 @@
     <p>Subject: <%= message.subject %></p>
     <p>Content: <%= message.content %></p>
     <a href="mailto:<%=message.email%>?subject=RE:%20<%=message.subject%>">Answer!</a>
-    <form id="delete" action="/<%= message.id %>" method="post">
+    <form id="delete" action="/about/delete/<%= message.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete">
     </form>

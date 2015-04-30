@@ -31,22 +31,18 @@ class AboutController < ApplicationController
     end
   end
 
-  get '/' do
-    erb :main
-  end
-
   get '/about' do
     erb :about
   end
 
-  get '/view' do
+  get '/about/view_messages' do
     protected!
 
     @messages = Message.all :order => :id.desc
     erb :view
   end
 
-  post '/send' do
+  post '/about/message_sent' do
     m = Message.new
     m.name = params[:name]
     m.email = params[:email]
@@ -63,9 +59,9 @@ class AboutController < ApplicationController
     end
   end
 
-  delete '/:id' do
+  delete '/about/delete/:id' do
     m = Message.get params[:id]
     m.destroy
-    redirect '/view'
+    redirect '/about/view_messages'
   end
 end
