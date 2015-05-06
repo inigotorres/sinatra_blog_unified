@@ -41,7 +41,7 @@ button{
 /* Style ========================================== */
 body {
   width: 1000px;
-  left-margin: 8px;
+  margin-left: 15px;
   font-family: "Trebuchet MS", Helvetica, sans-serif
 }
 
@@ -83,6 +83,14 @@ a:hover {
   border: 2px solid #777; 
 }
 
+.blog_post {
+  background-color: #92cd8a;
+  padding: 20px;
+  margin: 20px 15%;
+  border-radius: 10px;
+  border: 2px solid #45c235;
+}
+
 h1{
   margin-bottom: 10px;
 }
@@ -108,4 +116,8 @@ p {
 
 .separator {
   display: inline;
+}
+
+.blog_post_title {
+  color: white;
 }

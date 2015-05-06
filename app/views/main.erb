@@ -1,7 +1,7 @@
 <body>
   <% @blog_posts.each do |blog_post| %>
     <div class="blog_post">
-    <h2><%= blog_post.title %></h2>  
+    <p class="blog_post_title"><%= blog_post.title %></p>  
     <small>Created by <%= blog_post.author %> at <%= blog_post.created_at %></small>
     <p><%= blog_post.content %></p>
     </div>
