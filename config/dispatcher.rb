@@ -12,7 +12,7 @@ module MyApplication
       path_info = env['PATH_INFO']
 
       app = FreestyleController.new
-      app = AboutController.new if path_info == '/about'
+      app = AboutController.new if path_info =~ %r"/about"
 
       app.call(env)
     end
