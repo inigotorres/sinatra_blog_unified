@@ -121,3 +121,8 @@ p {
 .blog_post_title {
   color: white;
 }
+
+#link_on_right {
+  float: right;
+  margin-right: 10px;
+}

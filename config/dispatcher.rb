@@ -1,8 +1,4 @@
 require 'controllers/application_controller'
-require 'controllers/not_found_controller'
-
-require 'controllers/api_controller'
-
 require 'controllers/freestyle_controller'
 require 'controllers/about_controller'
 

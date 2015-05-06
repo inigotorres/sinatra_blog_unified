@@ -3,7 +3,7 @@ require 'rubygems'
 require 'data_mapper'
 require 'pony'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/freestyle.db")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/main_database.db")
 
 class AboutController < ApplicationController
   class Message
@@ -39,7 +39,7 @@ class AboutController < ApplicationController
     protected!
 
     @messages = Message.all :order => :id.desc
-    erb :view
+    erb :messages_view
   end
 
   post '/about/message_sent' do
@@ -54,9 +54,9 @@ class AboutController < ApplicationController
 		:from => 'no_response_please@peertransfer.com', 
 		:subject => 'New message in your blog',
 		:body => "New message in your blog! Received at #{m.created_at} from #{m.name} with email #{m.email} and subject #{m.subject}"
-      erb :send
+      erb :message_sent
     else
-      erb :send_error
+      erb :message_send_error
     end
   end
 

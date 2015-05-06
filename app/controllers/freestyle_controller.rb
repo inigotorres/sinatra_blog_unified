@@ -2,7 +2,7 @@ require 'sinatra'
 require 'rubygems'
 require 'data_mapper'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/blog_posts.db")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/main_database.db")
 
 class FreestyleController < ApplicationController
   class Blog_Post
@@ -24,7 +24,7 @@ class FreestyleController < ApplicationController
   end
 
   get '/submit_post' do
-    erb :submit
+    erb :post_submit
   end
 
   post '/submit_post/post_sent' do
