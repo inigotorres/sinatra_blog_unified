@@ -39,10 +39,4 @@ class AboutController < ApplicationController
       erb :message_send_error
     end
   end
-
-  delete '/about/delete/:id' do
-    m = Message.get params[:id]
-    m.destroy
-    redirect '/about/view_messages'
-  end
 end

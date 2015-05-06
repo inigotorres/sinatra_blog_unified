@@ -28,4 +28,12 @@ class AdminController < ApplicationController
     @messages = AboutController::Message.all :order => :id.desc
     erb :messages_view
   end
+
+  delete '/admin/delete/:id' do
+    protected!
+    
+    m = AboutController::Message.get params[:id]
+    m.destroy
+    redirect '/admin/view_messages'
+  end
 end
