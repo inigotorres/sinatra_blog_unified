@@ -48,6 +48,7 @@ class AboutController < ApplicationController
     m.email = params[:email]
     m.subject = params[:subject]
     m.content = params[:content]
+
     if m.save
       Pony.mail :to => 'itorres@peertransfer.com', 
 		:from => 'no_response_please@peertransfer.com', 
