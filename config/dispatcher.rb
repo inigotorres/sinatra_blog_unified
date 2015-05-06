@@ -1,6 +1,8 @@
 require 'controllers/application_controller'
 require 'controllers/freestyle_controller'
 require 'controllers/about_controller'
+require 'controllers/admin_controller'
+
 
 module MyApplication
   class Dispatcher
@@ -9,6 +11,7 @@ module MyApplication
 
       app = FreestyleController.new
       app = AboutController.new if path_info =~ %r"/about"
+      app = AdminController.new if path_info =~ %r"/admin"
 
       app.call(env)
     end
