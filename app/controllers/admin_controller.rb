@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'rubygems'
 require 'controllers/about_controller'
+require 'controllers/freestyle_controller'
 
 class AdminController < ApplicationController
   helpers do
@@ -35,5 +36,26 @@ class AdminController < ApplicationController
     m = AboutController::Message.get params[:id]
     m.destroy
     redirect '/admin/view_messages'
+  end
+
+  get '/admin/submit_post' do
+    protected!
+
+    erb :post_submit
+  end
+
+  post '/admin/submit_post/post_sent' do
+    protected!
+
+    b = FreeStyleController::Blog_Post.new
+    b.title = params[:title]
+    b.author = params[:author]
+    b.content = params[:content]
+    
+    if b.save
+      erb :post_submitted
+    else
+      erb :post_submission_error
+    end
   end
 end

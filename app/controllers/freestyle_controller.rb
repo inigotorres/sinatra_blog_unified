@@ -22,21 +22,4 @@ class FreestyleController < ApplicationController
 
     erb :main
   end
-
-  get '/submit_post' do
-    erb :post_submit
-  end
-
-  post '/submit_post/post_sent' do
-    b = Blog_Post.new
-    b.title = params[:title]
-    b.author = params[:author]
-    b.content = params[:content]
-    
-    if b.save
-      erb :post_submitted
-    else
-      erb :post_submission_error
-    end
-  end
 end
