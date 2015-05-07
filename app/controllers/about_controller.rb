@@ -1,23 +1,10 @@
 require 'sinatra'
 require 'rubygems'
-require 'data_mapper'
 require 'pony'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/main_database.db")
+require 'models/main_models.rb'
 
 class AboutController < ApplicationController
-  class Message
-    include DataMapper::Resource
-    property :id, Serial
-    property :name, Text
-    property :email, Text, :required => true
-    property :subject, Text
-    property :content, Text, :required => true
-    property :created_at, DateTime
-  end
-
-  DataMapper.finalize.auto_upgrade!
-
   get '/about' do
     erb :about
   end

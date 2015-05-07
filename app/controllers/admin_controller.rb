@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'rubygems'
-require 'controllers/about_controller'
-require 'controllers/freestyle_controller'
+
+require 'models/main_models.rb'
 
 class AdminController < ApplicationController
   helpers do
@@ -33,7 +33,7 @@ class AdminController < ApplicationController
   delete '/admin/delete/:id' do
     protected!
     
-    m = AboutController::Message.get params[:id]
+    m = Message.get params[:id]
     m.destroy
     redirect '/admin/view_messages'
   end
@@ -47,7 +47,7 @@ class AdminController < ApplicationController
   post '/admin/submit_post/post_sent' do
     protected!
 
-    b = FreeStyleController::Blog_Post.new
+    b = Blog_Post.new
     b.title = params[:title]
     b.author = params[:author]
     b.content = params[:content]
