@@ -1,0 +1,20 @@
+<h1>Delete a post</h1>
+
+<p><a href='/admin'>Go back</a>
+
+<% @blog_posts.each do |blog_post| %>
+  <div class="blog_post">
+    <p class="blog_post_title"><%= blog_post.title %></p>  
+    <small>
+      Created by <%= blog_post.author %> on 
+      <%= blog_post.created_at.day %>/<%= blog_post.created_at.month %>/<%= blog_post.created_at.year %>
+    </small>
+    <p><%= blog_post.content %></p>
+    
+    <form id="delete" action="/admin/post_delete/<%= blog_post.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete this entry">
+    </form>
+
+  </div>
+<% end %>

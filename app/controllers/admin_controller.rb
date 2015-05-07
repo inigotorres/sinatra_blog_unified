@@ -26,22 +26,21 @@ class AdminController < ApplicationController
   get '/admin/view_messages' do
     protected!
   
-    @messages = AboutController::Message.all :order => :id.desc
+    @messages = Message.all :order => :id.desc
     erb :messages_view
-  end
-
-  delete '/admin/delete/:id' do
-    protected!
-    
-    m = Message.get params[:id]
-    m.destroy
-    redirect '/admin/view_messages'
   end
 
   get '/admin/submit_post' do
     protected!
 
     erb :post_submit
+  end
+
+  get '/admin/delete_post' do
+    protected!
+
+    @blog_posts = Blog_Post.all :order => :id.desc
+    erb :post_delete
   end
 
   post '/admin/submit_post/post_sent' do
@@ -57,5 +56,21 @@ class AdminController < ApplicationController
     else
       erb :post_submission_error
     end
+  end
+
+  delete '/admin/delete/:id' do
+    protected!
+    
+    m = Message.get params[:id]
+    m.destroy
+    redirect '/admin/view_messages'
+  end
+
+ delete '/admin/post_delete/:id' do
+    protected!
+    
+    b = Blog_Post.get params[:id]
+    b.destroy
+    redirect '/admin/delete_post'
   end
 end
