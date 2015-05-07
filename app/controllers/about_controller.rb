@@ -36,7 +36,7 @@ class AboutController < ApplicationController
 		:body => "New message in your blog! Received at #{m.created_at} from #{m.name} with email #{m.email} and subject #{m.subject}"
       erb :message_sent
     else
-      erb :message_send_error
+      erb :message_sent_error
     end
   end
 end
