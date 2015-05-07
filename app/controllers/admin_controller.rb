@@ -58,7 +58,7 @@ class AdminController < ApplicationController
     end
   end
 
-  delete '/admin/delete/:id' do
+  delete '/admin/message_delete/:id' do
     protected!
     
     m = Message.get params[:id]
