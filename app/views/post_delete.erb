@@ -11,7 +11,7 @@
     </small>
     <p><%= blog_post.content %></p>
     
-    <form id="delete" action="/admin/post_delete/<%= blog_post.id %>" method="post">
+    <form id="delete" action="/admin/post_delete/<%= blog_post.id %>" method="post" onsubmit="return confirm('Do you really want to delete the post?');">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete this entry">
     </form>
