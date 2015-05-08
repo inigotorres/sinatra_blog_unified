@@ -53,8 +53,6 @@ class AdminController < ApplicationController
     
     if b.save
       erb :post_submitted
-    else
-      erb :post_submission_error
     end
   end
 
