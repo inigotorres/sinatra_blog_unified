@@ -1,3 +1,9 @@
+<script>
+  function confirm_deletion(form){
+    return confirm("Do you really want to delete this post?");
+  }
+</script>
+
 <h1>Delete a post</h1>
 
 <p><a href='/admin'>Go back</a>
@@ -11,7 +17,7 @@
     </small>
     <p><%= blog_post.content %></p>
     
-    <form id="delete" action="/admin/post_delete/<%= blog_post.id %>" method="post" onsubmit="return confirm('Do you really want to delete the post?');">
+    <form id="delete" action="/admin/post_delete/<%= blog_post.id %>" method="post" onsubmit="return confirm_deletion(this);">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete this entry">
     </form>

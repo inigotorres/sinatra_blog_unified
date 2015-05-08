@@ -1,3 +1,9 @@
+<script>
+  function confirm_deletion(form){
+    return confirm('Do you really want to delete this message?');
+  }
+</script>
+
 <body>
   <p><a href="/admin">Go back</a></p>
 
@@ -9,7 +15,7 @@
     <p>Subject: <%= message.subject %></p>
     <p>Content: <%= message.content %></p>
     <a href="mailto:<%=message.email%>?subject=RE:%20<%=message.subject%>">Answer!</a>
-    <form id="delete" action="/admin/message_delete/<%= message.id %>" method="post" onsubmit="return confirm('Do you really want to delete this message?');">
+    <form id="delete" action="/admin/message_delete/<%= message.id %>" method="post" onsubmit="return confirm_deletion(this);">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete">
     </form>
