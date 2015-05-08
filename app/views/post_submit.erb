@@ -3,18 +3,18 @@
 <form class="blog_post" action="/admin/submit_post/post_sent" method="post">
     <div>
       <label for="author">Your Name: <span id="needed">*</span></label>
-      <input type="text" name="author">
+      <input type="text" name="author" required>
     </div>
 
     <div>
       <label for="title">Title: <spain id="needed">*</span></label>
-      <input type="text" name="title">
+      <input type="text" name="title" required>
     </div>
 
     <div>
       <label for="content">Content: <span id="needed">*</span></label>
       <br>
-      <textarea name="content"></textarea>
+      <textarea name="content" required></textarea>
     </div>
     
     <input type="submit" value="Submit your entry!">
