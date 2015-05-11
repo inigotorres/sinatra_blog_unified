@@ -23,24 +23,24 @@ class AdminController < ApplicationController
     erb :admin_page
   end
 
-  get '/admin/view_messages' do
+  get '/admin/messages_view' do
     protected!
 
     @messages = Message.all order: :id.desc
     erb :messages_view
   end
 
-  get '/admin/submit_post' do
+  get '/admin/post_submit' do
     protected!
 
     erb :post_submit
   end
 
-  get '/admin/delete_post' do
+  get '/admin/posts_view' do
     protected!
 
     @blog_posts = BlogPost.all order: :id.desc
-    erb :post_delete
+    erb :posts_view
   end
 
   get '/admin/post_edit/:id' do
@@ -50,7 +50,7 @@ class AdminController < ApplicationController
     erb :post_edit
   end
 
-  post '/admin/submit_post/post_sent' do
+  post '/admin/post_submit/post_sent' do
     protected!
 
     b = BlogPost.new
