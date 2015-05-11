@@ -39,21 +39,21 @@ class AdminController < ApplicationController
   get '/admin/delete_post' do
     protected!
 
-    @blog_posts = Blog_Post.all :order => :id.desc
+    @blog_posts = BlogPost.all :order => :id.desc
     erb :post_delete
   end
 
   get '/admin/post_edit/:id' do
     protected!
 
-    @b = Blog_Post.get params[:id]
+    @b = BlogPost.get params[:id]
     erb :post_edit
   end
 
   post '/admin/submit_post/post_sent' do
     protected!
 
-    b = Blog_Post.new
+    b = BlogPost.new
     b.title = params[:title]
     b.author = params[:author]
     b.content = params[:content]
@@ -66,7 +66,7 @@ class AdminController < ApplicationController
   put '/admin/post_edit/post_updated/:id' do
     protected!
 
-    b = Blog_Post.get params[:id]
+    b = BlogPost.get params[:id]
     if b.update(title: params[:title], author: params[:author], content: params[:content])
       erb :post_updated
     end
@@ -83,7 +83,7 @@ class AdminController < ApplicationController
   delete '/admin/post_delete/:id' do
     protected!
     
-    b = Blog_Post.get params[:id]
+    b = BlogPost.get params[:id]
     b.destroy
     redirect '/admin/delete_post'
   end
