@@ -43,6 +43,13 @@ class AdminController < ApplicationController
     erb :post_delete
   end
 
+  get '/admin/post_edit/:id' do
+    protected!
+
+    @b = Blog_Post.get params[:id]
+    erb :post_edit
+  end
+
   post '/admin/submit_post/post_sent' do
     protected!
 
@@ -56,6 +63,15 @@ class AdminController < ApplicationController
     end
   end
 
+  put '/admin/post_edit/post_updated/:id' do
+    protected!
+
+    b = Blog_Post.get params[:id]
+    if b.update(title: params[:title], author: params[:author], content: params[:content])
+      erb :post_updated
+    end
+  end
+
   delete '/admin/message_delete/:id' do
     protected!
     
@@ -64,7 +80,7 @@ class AdminController < ApplicationController
     redirect '/admin/view_messages'
   end
 
- delete '/admin/post_delete/:id' do
+  delete '/admin/post_delete/:id' do
     protected!
     
     b = Blog_Post.get params[:id]

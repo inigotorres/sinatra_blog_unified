@@ -1,0 +1,22 @@
+<p>Update post</p>
+
+<form class="blog_post" action="/admin/post_edit/post_updated/<%= @b.id %>" method="post">
+  <div>
+    <label for="author">Your Name: <span id="needed">*</span></label>
+    <input type="text" name="author" value="<%= @b.author %>" required>
+  </div>
+
+  <div>
+    <label for="title">Title: <spain id="needed">*</span></label>
+    <input type="text" name="title" value="<%= @b.title %>" required>
+  </div>
+
+  <div>
+    <label for="content">Content: <span id="needed">*</span></label>
+    <br>
+    <textarea name="content" required><%= @b.content %></textarea>
+  </div>
+
+  <input type="hidden" name="_method" value="put">
+  <input type="submit" value="Update your entry!">
+</form>
