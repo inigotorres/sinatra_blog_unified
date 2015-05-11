@@ -13,7 +13,7 @@ class AdminController < ApplicationController
 
     def authorized?
       @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+      @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['admin', 'admin']
     end
   end
 
@@ -25,8 +25,8 @@ class AdminController < ApplicationController
 
   get '/admin/view_messages' do
     protected!
-  
-    @messages = Message.all :order => :id.desc
+
+    @messages = Message.all order: :id.desc
     erb :messages_view
   end
 
@@ -39,7 +39,7 @@ class AdminController < ApplicationController
   get '/admin/delete_post' do
     protected!
 
-    @blog_posts = BlogPost.all :order => :id.desc
+    @blog_posts = BlogPost.all order: :id.desc
     erb :post_delete
   end
 
@@ -57,10 +57,8 @@ class AdminController < ApplicationController
     b.title = params[:title]
     b.author = params[:author]
     b.content = params[:content]
-    
-    if b.save
-      erb :post_submitted
-    end
+
+    erb :post_submitted if b.save
   end
 
   put '/admin/post_edit/post_updated/:id' do
@@ -74,7 +72,7 @@ class AdminController < ApplicationController
 
   delete '/admin/message_delete/:id' do
     protected!
-    
+
     m = Message.get params[:id]
     m.destroy
     redirect '/admin/view_messages'
@@ -82,7 +80,7 @@ class AdminController < ApplicationController
 
   delete '/admin/post_delete/:id' do
     protected!
-    
+
     b = BlogPost.get params[:id]
     b.destroy
     redirect '/admin/delete_post'

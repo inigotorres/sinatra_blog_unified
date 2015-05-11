@@ -3,7 +3,6 @@ require 'controllers/freestyle_controller'
 require 'controllers/about_controller'
 require 'controllers/admin_controller'
 
-
 module MyApplication
   class Dispatcher
     def call(env)

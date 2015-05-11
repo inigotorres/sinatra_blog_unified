@@ -17,10 +17,10 @@ class AboutController < ApplicationController
     m.content = params[:content]
 
     if m.save
-      Pony.mail :to => 'itorres@peertransfer.com', 
-		:from => 'no_response_please@peertransfer.com', 
-		:subject => 'New message in your blog',
-		:body => "New message in your blog! Received at #{m.created_at} from #{m.name} with email #{m.email} and subject #{m.subject}"
+      Pony.mail to: 'itorres@peertransfer.com',
+                from: 'no_response_please@peertransfer.com',
+                subject: 'New message in your blog',
+                body: "New message in your blog! Received at #{m.created_at} from #{m.name} with email #{m.email} and subject #{m.subject}"
       erb :message_sent
     end
   end
