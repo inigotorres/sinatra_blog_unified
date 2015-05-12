@@ -12,10 +12,16 @@
   <p><%= @b.content %></p>
 </div>
 
-<h3>Comments</h3>
-<% @comments_for_post.each do |comment| %>
-  <p><%= comment.author %> wrote</p>
-  <p><%= comment.content %></p>
+<h3>Comments (<%= @comments_for_post.length %>)</h3>
+<% unless @comments_for_post.empty? %>
+  <div class="comments">
+    <ul>
+      <% @comments_for_post.each do |comment| %>
+	<li><p>On <%= comment.created_at.day %>/<%= comment.created_at.month %>/<%= comment.created_at.year %>, <%= comment.author %> wrote:</p>
+	<p><%= comment.content %></p></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <h3>Leave a comment!</h3>
