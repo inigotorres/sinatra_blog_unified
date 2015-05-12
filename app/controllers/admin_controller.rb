@@ -57,7 +57,7 @@ class AdminController < ApplicationController
     b.title = params[:title]
     b.author = params[:author]
     b.content = params[:content]
-    b.url_title = params[:title].downcase.split.join("_")
+    b.url_title = params[:title].downcase.gsub(" ","_")
 
     raise 'The post title has been already used for another entry.' unless b.save
     erb :post_submitted
@@ -71,7 +71,7 @@ class AdminController < ApplicationController
       title: params[:title], 
       author: params[:author], 
       content: params[:content], 
-      url_title: params[:title].downcase.split.join("_")
+      url_title: params[:title].downcase.gsub(" ","_")
     )
     erb :post_updated
   end

@@ -2,7 +2,12 @@
   <p class="blog_post_title"><%= @b.title %></p>  
   <small>
     Created by <%= @b.author %> on 
-    <%= @b.created_at.day %>/<%= @b.created_at.month %>/<%= @b.created_at.year %>
+    <%= @b.created_at.day %>/<%= @b.created_at.month %>/<%= @b.created_at.year %>. 
+  </small>
+  <small>
+    <% if @b.created_at != @b.updated_at %>
+      Updated on <%= @b.updated_at.day %>/<%= @b.updated_at.month %>/<%= @b.updated_at.year %>.
+    <% end %>
   </small>
   <p><%= @b.content %></p>
 </div>

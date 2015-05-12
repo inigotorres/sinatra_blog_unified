@@ -10,6 +10,7 @@ class Message
   property :subject, Text
   property :content, Text, required: true
   property :created_at, DateTime
+  property :updated_at, DateTime
 end
 
 class BlogPost
