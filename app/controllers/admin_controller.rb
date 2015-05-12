@@ -59,25 +59,21 @@ class AdminController < ApplicationController
     b.content = params[:content]
     b.url_title = params[:title].downcase.split.join("_")
 
-    if b.save 
-      erb :post_submitted if b.save
-    else
-      raise 'The post title has been already used for another entry.'  
-    end
+    raise 'The post title has been already used for another entry.' unless b.save
+    erb :post_submitted
   end
 
   put '/admin/post_edit/post_updated/:id' do
     protected!
 
     b = BlogPost.get params[:id]
-    if b.update(title: params[:title], 
-                author: params[:author], 
-                content: params[:content], 
-                url_title: params[:title].downcase.split.join("_"))
-      erb :post_updated
-    else
-      raise 'The post title has been already used for another entry.'
-    end
+    raise 'The post title has been already used for another entry.' unless b.update(
+      title: params[:title], 
+      author: params[:author], 
+      content: params[:content], 
+      url_title: params[:title].downcase.split.join("_")
+    )
+    erb :post_updated
   end
 
   delete '/admin/message_delete/:id' do
