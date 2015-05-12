@@ -57,6 +57,7 @@ class AdminController < ApplicationController
     b.title = params[:title]
     b.author = params[:author]
     b.content = params[:content]
+    b.url_title = params[:title].downcase.split.join("_")
 
     erb :post_submitted if b.save
   end

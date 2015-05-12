@@ -18,6 +18,7 @@ class BlogPost
   property :title, String, required: true
   property :author, String, required: true
   property :content, Text, required: true
+  property :url_title, String, unique: true
   property :created_at, DateTime
   property :updated_at, DateTime
 end
