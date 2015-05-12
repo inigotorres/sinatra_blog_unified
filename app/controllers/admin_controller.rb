@@ -59,15 +59,24 @@ class AdminController < ApplicationController
     b.content = params[:content]
     b.url_title = params[:title].downcase.split.join("_")
 
-    erb :post_submitted if b.save
+    if b.save 
+      erb :post_submitted if b.save
+    else
+      raise 'The post title has been already used for another entry.'  
+    end
   end
 
   put '/admin/post_edit/post_updated/:id' do
     protected!
 
     b = BlogPost.get params[:id]
-    if b.update(title: params[:title], author: params[:author], content: params[:content])
+    if b.update(title: params[:title], 
+                author: params[:author], 
+                content: params[:content], 
+                url_title: params[:title].downcase.split.join("_"))
       erb :post_updated
+    else
+      raise 'The post title has been already used for another entry.'
     end
   end
 
@@ -84,6 +93,6 @@ class AdminController < ApplicationController
 
     b = BlogPost.get params[:id]
     b.destroy
-    redirect '/admin/delete_post'
+    redirect '/admin/posts_view'
   end
 end
