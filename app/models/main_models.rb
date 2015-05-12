@@ -24,4 +24,13 @@ class BlogPost
   property :updated_at, DateTime
 end
 
+class Comment
+  include DataMapper::Resource
+  property :id, Serial
+  property :blog_post_id, Integer
+  property :author, String, default: 'Anonymous'
+  property :created_at, DateTime
+  property :content, Text, required: true 
+end
+
 DataMapper.finalize.auto_upgrade!

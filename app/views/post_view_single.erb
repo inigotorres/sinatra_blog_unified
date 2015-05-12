@@ -11,3 +11,24 @@
   </small>
   <p><%= @b.content %></p>
 </div>
+
+<h3>Comments</h3>
+<% @comments_for_post.each do |comment| %>
+  <p><%= comment.author %> wrote</p>
+  <p><%= comment.content %></p>
+<% end %>
+
+<h3>Leave a comment!</h3>
+<form action="/blog/leave_comment/<%= @b.id %>" method="post">
+  <div>
+    <label for="author">Your name:</label>
+    <input type="text" name="author">
+  </div>
+
+  <div>
+    <label for="content">Your comment:<span id="needed">*</span></label>
+    <textarea name="content" required></textarea>
+  </div>
+
+  <input type="submit" value="Leave your comment!">
+</form>
