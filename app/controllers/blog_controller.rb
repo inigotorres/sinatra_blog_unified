@@ -13,7 +13,7 @@ class BlogController < ApplicationController
   post '/blog/leave_comment/:blog_post_id' do
     c = Comment.new
     c.blog_post_id = params[:blog_post_id]
-    c.author = params[:author]
+    c.author = params[:author] unless params[:author].empty?
     c.content = params[:content]
     blog_post = BlogPost.get(params[:blog_post_id])
     blog_post.comments << c
