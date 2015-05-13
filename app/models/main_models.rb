@@ -21,6 +21,8 @@ class BlogPost
   property :url_title, String, unique: true
   property :created_at, DateTime
   property :updated_at, DateTime
+
+  has n, :comments
 end
 
 class Comment
@@ -30,6 +32,8 @@ class Comment
   property :author, String, default: 'Anonymous'
   property :created_at, DateTime
   property :content, Text, required: true 
+
+  belongs_to :blog_post
 end
 
 DataMapper.finalize.auto_upgrade!

@@ -47,7 +47,6 @@ class AdminController < ApplicationController
     protected!
 
     @b = BlogPost.get params[:id]
-    @comments_for_post = Comment.all(blog_post_id: params[:id])
     erb :post_edit
   end
 

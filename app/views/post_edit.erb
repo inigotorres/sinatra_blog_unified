@@ -21,11 +21,11 @@
   <input type="submit" value="Update your entry!">
 </form>
 
-<h3>Comments (<%= @comments_for_post.length %>)</h3>
-<% unless @comments_for_post.empty? %>
+<h3>Comments (<%= @b.comments.length %>)</h3>
+<% unless @b.comments.empty? %>
   <div class="comments">
     <ul>
-      <% @comments_for_post.each do |comment| %>
+      <% @b.comments.each do |comment| %>
 	<li><p>On <%= comment.created_at.day %>/<%= comment.created_at.month %>/<%= comment.created_at.year %>, <%= comment.author %> wrote:</p>
 	<p><%= comment.content %></p></li>
 
