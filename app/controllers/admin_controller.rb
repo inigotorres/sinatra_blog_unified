@@ -47,6 +47,7 @@ class AdminController < ApplicationController
     protected!
 
     @b = BlogPost.get params[:id]
+    @comments_for_post = Comment.all(blog_post_id: params[:id])
     erb :post_edit
   end
 
@@ -95,5 +96,14 @@ class AdminController < ApplicationController
       comment.destroy
     end 
     redirect '/admin/posts_view'
+  end
+
+  delete '/admin/comment_delete/:id' do
+    c = Comment.get params[:id]
+    blog_post_id = c.blog_post_id
+
+    c.destroy
+
+    redirect "/admin/post_edit/#{blog_post_id}"
   end
 end

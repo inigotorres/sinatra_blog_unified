@@ -1,4 +1,4 @@
-<p>Update post</p>
+<h1>Update post</h1>
 
 <form class="blog_post" action="/admin/post_edit/post_updated/<%= @b.id %>" method="post">
   <div>
@@ -20,3 +20,20 @@
   <input type="hidden" name="_method" value="put">
   <input type="submit" value="Update your entry!">
 </form>
+
+<h3>Comments (<%= @comments_for_post.length %>)</h3>
+<% unless @comments_for_post.empty? %>
+  <div class="comments">
+    <ul>
+      <% @comments_for_post.each do |comment| %>
+	<li><p>On <%= comment.created_at.day %>/<%= comment.created_at.month %>/<%= comment.created_at.year %>, <%= comment.author %> wrote:</p>
+	<p><%= comment.content %></p></li>
+
+	<form id="delete" action="/admin/comment_delete/<%= comment.id %>" method="post" onsubmit="return confirm_deletion(this);">
+	  <input type="hidden" name="_method" value="delete">
+	  <input type="submit" value="Delete this comment">
+	</form>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
