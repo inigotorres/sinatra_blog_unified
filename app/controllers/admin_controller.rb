@@ -88,7 +88,12 @@ class AdminController < ApplicationController
     protected!
 
     b = BlogPost.get params[:id]
+    comments_for_b = Comment.all(blog_post_id: params[:id])
+
     b.destroy
+    comments_for_b.each do |comment|
+      comment.destroy
+    end 
     redirect '/admin/posts_view'
   end
 end
