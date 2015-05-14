@@ -1,8 +1,8 @@
 require 'sinatra'
 require 'rubygems'
-require 'pony'
 
 require 'models/main_models.rb'
+require 'lib/mailer.rb'
 
 class BlogController < ApplicationController
   get '/blog/:url_title' do
@@ -19,10 +19,7 @@ class BlogController < ApplicationController
     blog_post.comments << c
 
     if blog_post.save
-      Pony.mail to: 'itorres@peertransfer.com',
-                from: 'no_response_please@peertransfer.com',
-                subject: 'New comment in your blog',
-                body: "New comment in your blog! Received at #{c.created_at} from #{c.author} on the post '#{blog_post.title}'."
+      Mailer::send_email('New comment in your blog', "New comment in your blog! Received at #{c.created_at} from #{c.author} on the post '#{blog_post.title}'.")
     end
  
     redirect "/blog/#{blog_post.url_title}"
