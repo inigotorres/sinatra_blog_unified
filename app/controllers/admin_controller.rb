@@ -81,7 +81,7 @@ class AdminController < ApplicationController
 
     m = Message.get params[:id]
     m.destroy
-    redirect '/admin/view_messages'
+    redirect '/admin/messages_view'
   end
 
   delete '/admin/post_delete/:id' do
